@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1.adapter;
+package com.sharma.deepak.popularmoviestage1.view.movie_detail_module;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,18 +12,18 @@ import com.bumptech.glide.Glide;
 import com.sharma.deepak.popularmoviestage1.R;
 import com.sharma.deepak.popularmoviestage1.bean.Movie;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by deepak on 18-04-2017.
  */
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieHolderPattern> {
-    private ArrayList<Movie> movieListDetails;
+    private List<Movie> movieListDetails;
     private Context context;
     MovieItemClickInterface movieInterface;
 
-    public MovieListAdapter(ArrayList<Movie> movieListDetails, Context context, MovieItemClickInterface movieInterface) {
+    public MovieListAdapter(List<Movie> movieListDetails, Context context, MovieItemClickInterface movieInterface) {
         this.context = context;
         this.movieListDetails = movieListDetails;
         this.movieInterface = movieInterface;
@@ -40,13 +40,13 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     @Override
     public void onBindViewHolder(MovieHolderPattern holder, int position) {
         Movie movie = movieListDetails.get(position);
-        holder.movieTitle.setText(movie.getMovieName());
-        String movieDetailString = "(" + movie.getLanguage() + ")" + "(" + movie.getVoteAverage() + "/10)";
+        holder.movieTitle.setText(movie.getTitle());
+        String movieDetailString = "(" + movie.getOriginal_language() + ")" + "(" + movie.getVoteAverage() + "/10)";
         holder.movieDetail.setText(movieDetailString);
 
         Glide
                 .with(context)
-                .load(movie.getImageThumbnail())
+                .load(movie.getPoster_path())
                 .centerCrop()
                 .crossFade()
                 .placeholder(R.drawable.movie_default)

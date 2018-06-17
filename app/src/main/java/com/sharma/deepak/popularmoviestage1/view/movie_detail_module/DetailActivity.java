@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1;
+package com.sharma.deepak.popularmoviestage1.view.movie_detail_module;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.sharma.deepak.popularmoviestage1.R;
 import com.sharma.deepak.popularmoviestage1.bean.Movie;
+import com.sharma.deepak.popularmoviestage1.view.movie_list_module.MovieListActivity;
 
 public class DetailActivity extends AppCompatActivity {
     private ImageView mMovieImage;
@@ -20,20 +22,20 @@ public class DetailActivity extends AppCompatActivity {
         initView();
 
         Intent detailIntent = getIntent();
-        Movie movie = (Movie) detailIntent.getSerializableExtra(MainActivity.MOVIE_DATA_PASSED_KEY);
+        Movie movie = (Movie) detailIntent.getSerializableExtra(MovieListActivity.MOVIE_DATA_PASSED_KEY);
         assignUiToView(movie);
 
     }
 
     //Method to assign values on UI
     private void assignUiToView(Movie movie) {
-        String movieName = movie.getMovieName();
-        String language = movie.getLanguage();
+        String movieName = movie.getTitle();
+        String language = movie.getOriginal_language();
         String overView = movie.getOverview();
-        String releaseDate = movie.getReleaseDate();
-        String imagePath = movie.getImageThumbnail();
+        String releaseDate = movie.getRelease_date();
+        String imagePath = movie.getPoster_path();
         double rating = movie.getVoteAverage();
-        int voteCount = movie.getVoteCount();
+        int voteCount = movie.getVote_count();
 
 
         Glide

@@ -3,6 +3,7 @@
     package="com.sharma.deepak.popularmoviestage1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.movie_list_module.MovieListActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +22,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailActivity"
+            android:name=".view.movie_detail_module.DetailActivity"
             android:label="@string/movie_detail"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".view.movie_list_module.MovieListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".view.movie_list_module.MovieListActivity" />
 
         </activity>
     </application>

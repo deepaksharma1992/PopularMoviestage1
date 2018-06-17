@@ -9,78 +9,43 @@ import java.io.Serializable;
  */
 
 public class Movie implements Serializable {
-    private String movieName, imageThumbnail, overview, releaseDate, language;
-    private double voteAverage;
-    private int voteCount;
+    private String title, poster_path, overview, release_date, original_language, original_title, backdrop_path;
+    private double voteAverage, id, popularity;
+    private int vote_count;
+    private boolean video, adult;
 
-    private static final String BASE_URL = "http://image.tmdb.org/t/p/w185";
+    private static final transient String BASE_URL = "http://image.tmdb.org/t/p/w185";
 
-    public String getMovieName() {
-        return movieName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
 
-    public String getImageThumbnail() {
-        return imageThumbnail;
-    }
-
-    public void setImageThumbnail(String imageThumbnail) {
-        this.imageThumbnail = moviePath(imageThumbnail);
+    public String getPoster_path() {
+        return moviePath(poster_path);
     }
 
     public String getOverview() {
         return overview;
     }
 
-    public void setOverview(String overview) {
-        this.overview = overview;
+
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
+    public String getOriginal_language() {
+        return original_language;
     }
 
     public double getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(double voteAverage) {
-        this.voteAverage = voteAverage;
+    public int getVote_count() {
+        return vote_count;
     }
 
-    public int getVoteCount() {
-        return voteCount;
-    }
-
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
-    }
-
-    public Movie(String movieName, String imageThumbnail, String overview, String releaseDate, String language, double voteAverage, int voteCount) {
-        this.movieName = movieName;
-        this.imageThumbnail = moviePath(imageThumbnail);
-
-        this.overview = overview;
-        this.releaseDate = releaseDate;
-        this.language = language;
-        this.voteAverage = voteAverage;
-        this.voteCount = voteCount;
-    }
 
     private final String moviePath(String addr) {
 
@@ -89,4 +54,29 @@ public class Movie implements Serializable {
                 .build();
         return builtUri.toString();
     }
+
+    public String getOriginal_title() {
+        return original_title;
+    }
+
+    public String getBackdrop_path() {
+        return moviePath(backdrop_path);
+    }
+
+    public double getId() {
+        return id;
+    }
+
+    public double getPopularity() {
+        return popularity;
+    }
+
+    public boolean isVideo() {
+        return video;
+    }
+
+    public boolean isAdult() {
+        return adult;
+    }
+
 }
