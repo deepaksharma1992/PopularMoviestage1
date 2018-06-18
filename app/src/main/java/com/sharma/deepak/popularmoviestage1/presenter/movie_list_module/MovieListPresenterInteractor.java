@@ -1,6 +1,6 @@
 package com.sharma.deepak.popularmoviestage1.presenter.movie_list_module;
 
-import com.sharma.deepak.popularmoviestage1.bean.Movie;
+import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
 
 import java.util.List;
 

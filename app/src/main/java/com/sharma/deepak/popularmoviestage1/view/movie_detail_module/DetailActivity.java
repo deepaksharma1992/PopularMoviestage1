@@ -7,8 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.sharma.deepak.popularmoviestage1.R;
-import com.sharma.deepak.popularmoviestage1.bean.Movie;
+import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
 import com.sharma.deepak.popularmoviestage1.view.movie_list_module.MovieListActivity;
 
 public class DetailActivity extends AppCompatActivity {
@@ -34,16 +35,18 @@ public class DetailActivity extends AppCompatActivity {
         String overView = movie.getOverview();
         String releaseDate = movie.getRelease_date();
         String imagePath = movie.getPoster_path();
-        double rating = movie.getVoteAverage();
+        double rating = movie.getVote_average();
         int voteCount = movie.getVote_count();
-
 
         Glide
                 .with(this)
                 .load(imagePath)
-                .crossFade()
-                .placeholder(R.drawable.movie_default)
+                .apply(new RequestOptions()
+                        .centerCrop()
+                        .error(R.drawable.movie_default)
+                        .placeholder(R.drawable.movie_default))
                 .into(mMovieImage);
+
 
         mOverViewTextView.setText(overView);
         mMovieLanguageTextView.setText(language);

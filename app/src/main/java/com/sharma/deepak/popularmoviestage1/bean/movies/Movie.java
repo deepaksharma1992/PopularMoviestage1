@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1.bean;
+package com.sharma.deepak.popularmoviestage1.bean.movies;
 
 import android.net.Uri;
 
@@ -9,12 +9,14 @@ import java.io.Serializable;
  */
 
 public class Movie implements Serializable {
-    private String title, poster_path, overview, release_date, original_language, original_title, backdrop_path;
-    private double voteAverage, id, popularity;
+    private String title, poster_path, overview, release_date, original_language, original_title, backdrop_path, id;
+    private double vote_average, popularity;
     private int vote_count;
     private boolean video, adult;
 
-    private static final transient String BASE_URL = "http://image.tmdb.org/t/p/w185";
+    private static final String BASE_URL = "http://image.tmdb.org/t/p/";
+    private static final transient String POSTER_URL = BASE_URL + "w300";
+    private static final transient String BACKDROP_URL = BASE_URL + " w500";
 
     public String getTitle() {
         return title;
@@ -22,13 +24,16 @@ public class Movie implements Serializable {
 
 
     public String getPoster_path() {
-        return moviePath(poster_path);
+        return moviePath(POSTER_URL, poster_path);
     }
 
     public String getOverview() {
         return overview;
     }
 
+    public String getId() {
+        return id;
+    }
 
     public String getRelease_date() {
         return release_date;
@@ -38,8 +43,8 @@ public class Movie implements Serializable {
         return original_language;
     }
 
-    public double getVoteAverage() {
-        return voteAverage;
+    public double getVote_average() {
+        return vote_average;
     }
 
     public int getVote_count() {
@@ -47,9 +52,9 @@ public class Movie implements Serializable {
     }
 
 
-    private final String moviePath(String addr) {
+    private final String moviePath(String url, String addr) {
 
-        Uri builtUri = Uri.parse(BASE_URL).buildUpon()
+        Uri builtUri = Uri.parse(url).buildUpon()
                 .appendEncodedPath(addr)
                 .build();
         return builtUri.toString();
@@ -60,11 +65,7 @@ public class Movie implements Serializable {
     }
 
     public String getBackdrop_path() {
-        return moviePath(backdrop_path);
-    }
-
-    public double getId() {
-        return id;
+        return moviePath(BACKDROP_URL, backdrop_path);
     }
 
     public double getPopularity() {

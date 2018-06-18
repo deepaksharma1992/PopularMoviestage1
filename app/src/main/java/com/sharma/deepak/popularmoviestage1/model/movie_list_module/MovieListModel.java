@@ -1,7 +1,7 @@
 package com.sharma.deepak.popularmoviestage1.model.movie_list_module;
 
-import com.sharma.deepak.popularmoviestage1.bean.Movie;
-import com.sharma.deepak.popularmoviestage1.bean.MovieListResponse;
+import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
+import com.sharma.deepak.popularmoviestage1.bean.movies.MovieListResponse;
 import com.sharma.deepak.popularmoviestage1.network.ApiClient;
 import com.sharma.deepak.popularmoviestage1.network.ApiInterface;
 import com.sharma.deepak.popularmoviestage1.presenter.movie_list_module.MovieListPresenterInteractor;

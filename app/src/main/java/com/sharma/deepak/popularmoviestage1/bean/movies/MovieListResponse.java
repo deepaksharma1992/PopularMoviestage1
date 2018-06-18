@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1.bean;
+package com.sharma.deepak.popularmoviestage1.bean.movies;
 
 import java.util.List;
 

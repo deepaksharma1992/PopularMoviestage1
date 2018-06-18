@@ -1,8 +1,6 @@
 package com.sharma.deepak.popularmoviestage1.presenter.movie_list_module;
 
-import android.content.Context;
-
-import com.sharma.deepak.popularmoviestage1.bean.Movie;
+import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
 import com.sharma.deepak.popularmoviestage1.model.movie_list_module.MovieListModel;
 import com.sharma.deepak.popularmoviestage1.model.movie_list_module.MovieListModelInteractor;
 import com.sharma.deepak.popularmoviestage1.view.movie_list_module.MovieListActivityInteractor;
@@ -15,12 +13,10 @@ import java.util.List;
 
 public class MovieListPresenter implements MovieListPresenterInteractor {
 
-    private Context mContext;
     private MovieListActivityInteractor mActivityInteractor;
     private MovieListModelInteractor mMovieListModelInteractor;
 
-    public MovieListPresenter(Context context, MovieListActivityInteractor activityInteractor) {
-        this.mContext = context;
+    public MovieListPresenter(MovieListActivityInteractor activityInteractor) {
         this.mActivityInteractor = activityInteractor;
         mMovieListModelInteractor = new MovieListModel(this);
     }

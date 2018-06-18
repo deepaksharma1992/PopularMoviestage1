@@ -11,12 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.sharma.deepak.popularmoviestage1.R;
-import com.sharma.deepak.popularmoviestage1.bean.Movie;
+import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
 import com.sharma.deepak.popularmoviestage1.presenter.movie_list_module.MovieListPresenter;
 import com.sharma.deepak.popularmoviestage1.presenter.movie_list_module.MovieListPresenterInteractor;
 import com.sharma.deepak.popularmoviestage1.view.BaseActivity;
 import com.sharma.deepak.popularmoviestage1.view.movie_detail_module.DetailActivity;
-import com.sharma.deepak.popularmoviestage1.view.movie_detail_module.MovieListAdapter;
 
 import java.util.List;
 
@@ -66,7 +65,7 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
     protected void setUpActivityComponents() {
         ButterKnife.bind(this);
         setTitle(getString(R.string.popular_movies_label));
-        mPresenterInteractor = new MovieListPresenter(this, this);
+        mPresenterInteractor = new MovieListPresenter(this);
         makeConnection(POPULAR_PARAM);
     }
 
@@ -77,6 +76,8 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
      * @description method to make the network connection
      */
     private void makeConnection(String preference) {
+        mMovieRecyclerView.setVisibility(View.INVISIBLE);
+        mProgressBar.setVisibility(View.VISIBLE);
         mPresenterInteractor.callMovieListAPI(preference);
     }
 
@@ -90,7 +91,6 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_popular) {
             makeConnection(POPULAR_PARAM);
             setTitle(getString(R.string.popular_movies_label));
@@ -100,7 +100,6 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
             setTitle(getString(R.string.top_rated_movies_label));
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -126,6 +125,7 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
      */
     @Override
     public void showDataView() {
+        mProgressBar.setVisibility(View.INVISIBLE);
         mErrorLinearLayout.setVisibility(View.GONE);
         mMovieRecyclerView.setVisibility(View.VISIBLE);
     }
@@ -137,6 +137,7 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
      */
     @Override
     public void showErrorView() {
+        mProgressBar.setVisibility(View.INVISIBLE);
         mMovieRecyclerView.setVisibility(View.GONE);
         mErrorLinearLayout.setVisibility(View.VISIBLE);
     }
