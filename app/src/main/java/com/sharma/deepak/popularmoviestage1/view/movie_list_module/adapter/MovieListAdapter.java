@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1.view.movie_list_module;
+package com.sharma.deepak.popularmoviestage1.view.movie_list_module.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

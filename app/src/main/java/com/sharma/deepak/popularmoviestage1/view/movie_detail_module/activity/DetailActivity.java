@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1.view.movie_detail_module;
+package com.sharma.deepak.popularmoviestage1.view.movie_detail_module.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.sharma.deepak.popularmoviestage1.R;
 import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
-import com.sharma.deepak.popularmoviestage1.view.movie_list_module.MovieListActivity;
+import com.sharma.deepak.popularmoviestage1.view.movie_list_module.activity.MovieListActivity;
 
 public class DetailActivity extends AppCompatActivity {
     private ImageView mMovieImage;
@@ -19,15 +17,15 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        initView();
+        setContentView(R.layout.content_movie_detail);
+      //  initView();
 
         Intent detailIntent = getIntent();
         Movie movie = (Movie) detailIntent.getSerializableExtra(MovieListActivity.MOVIE_DATA_PASSED_KEY);
-        assignUiToView(movie);
+       // assignUiToView(movie);
 
     }
-
+/*
     //Method to assign values on UI
     private void assignUiToView(Movie movie) {
         String movieName = movie.getTitle();
@@ -65,5 +63,5 @@ public class DetailActivity extends AppCompatActivity {
         mMovieReleaseDateTextView = (TextView) findViewById(R.id.tv_release_date);
         mUserRatingTextView = (TextView) findViewById(R.id.tv_rating_description);
         mOverViewTextView = (TextView) findViewById(R.id.tv_overview);
-    }
+    }*/
 }

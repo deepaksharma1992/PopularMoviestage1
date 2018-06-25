@@ -1,4 +1,4 @@
-package com.sharma.deepak.popularmoviestage1.view.movie_list_module;
+package com.sharma.deepak.popularmoviestage1.view.movie_list_module.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,9 @@ import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
 import com.sharma.deepak.popularmoviestage1.presenter.movie_list_module.MovieListPresenter;
 import com.sharma.deepak.popularmoviestage1.presenter.movie_list_module.MovieListPresenterInteractor;
 import com.sharma.deepak.popularmoviestage1.view.BaseActivity;
-import com.sharma.deepak.popularmoviestage1.view.movie_detail_module.DetailActivity;
+import com.sharma.deepak.popularmoviestage1.view.movie_detail_module.activity.MovieDetailActivity;
+import com.sharma.deepak.popularmoviestage1.view.movie_list_module.MovieListActivityInteractor;
+import com.sharma.deepak.popularmoviestage1.view.movie_list_module.adapter.MovieListAdapter;
 
 import java.util.List;
 
@@ -112,7 +114,7 @@ public class MovieListActivity extends BaseActivity implements MovieListAdapter.
     @Override
     public void movieClick(int position) {
         Movie movie = movieListData.get(position);
-        Intent detailActivityIntent = new Intent(this, DetailActivity.class);
+        Intent detailActivityIntent = new Intent(this, MovieDetailActivity.class);
         detailActivityIntent.putExtra(MOVIE_DATA_PASSED_KEY, movie);
         startActivity(detailActivityIntent);
         moveHead(this);

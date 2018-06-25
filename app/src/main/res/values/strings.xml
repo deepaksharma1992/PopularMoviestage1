@@ -10,4 +10,11 @@
     <string name="synopsis">Synopsis</string>
     <string name="popular_movies_label">Popular Movies</string>
     <string name="top_rated_movies_label">Top Rated Movies</string>
+    <string name="exclusive_videos_label">Exclusive Videos</string>
+    <string name="reviews_label">Reviews</string>
+    <string name="similar_movies_text">Similar Movies</string>
+    <string name="title_activity_movie_detail">MovieDetailActivity</string>
+    <string name="share_label">Share</string>
+    <string name="movie_details_not_present_label">Movie details not present</string>
+    <string name="votes_label">votes</string>
 </resources>
