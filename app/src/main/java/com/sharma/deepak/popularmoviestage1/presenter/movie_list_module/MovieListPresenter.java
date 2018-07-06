@@ -13,8 +13,8 @@ import java.util.List;
 
 public class MovieListPresenter implements MovieListPresenterInteractor {
 
-    private MovieListActivityInteractor mActivityInteractor;
-    private MovieListModelInteractor mMovieListModelInteractor;
+    private final MovieListActivityInteractor mActivityInteractor;
+    private final MovieListModelInteractor mMovieListModelInteractor;
 
     public MovieListPresenter(MovieListActivityInteractor activityInteractor) {
         this.mActivityInteractor = activityInteractor;
@@ -22,7 +22,7 @@ public class MovieListPresenter implements MovieListPresenterInteractor {
     }
 
     /**
-     * @param moviePreference the moveies that needed to fetch
+     * @param moviePreference the movies that needed to fetch
      * @author deepaks
      * @date 15 june 2018
      * @description method to call the movies list web API
@@ -53,4 +53,6 @@ public class MovieListPresenter implements MovieListPresenterInteractor {
     public void showError() {
         mActivityInteractor.showErrorView();
     }
+
+
 }

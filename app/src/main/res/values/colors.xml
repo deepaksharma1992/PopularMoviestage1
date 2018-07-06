@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary" tools:keep="@color/colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark" tools:keep="@color/colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="app_back">#E0e0e0</color>
+
+    <color name="transparent_back">#66000000</color>
+    <color name="movie_heading">#455A64</color>
+
+    <color name="black">#000000</color>
+    <color name="white" tools:keep="@color/white">#ffffff</color>
+    <color name="reviewer_color">#388E3C</color>
 </resources>

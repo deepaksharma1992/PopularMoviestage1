@@ -13,8 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://api.themoviedb.org/3/";
-    private static Retrofit retrofit = null;
+    private static final String BASE_URL = "http://api.themoviedb.org/3/";
 
     public static Retrofit getClient() {
 
@@ -23,15 +22,12 @@ public class ApiClient {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
 
-        retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
-
-
-        return retrofit;
     }
 
 }

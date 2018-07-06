@@ -22,7 +22,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MovieListModel implements MovieListModelInteractor {
 
     private Disposable mDisposable;
-    private MovieListPresenterInteractor mPresenterInteractor;
+    private final MovieListPresenterInteractor mPresenterInteractor;
 
     public MovieListModel(MovieListPresenterInteractor presenterInteractor) {
         this.mPresenterInteractor = presenterInteractor;
@@ -38,7 +38,8 @@ public class MovieListModel implements MovieListModelInteractor {
     public void callMovieListWebAPI(String movieType) {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Single<MovieListResponse> movieListResponseObservable = apiInterface.getMoviesListResponse(movieType
+        Single<MovieListResponse> movieListResponseObservable
+                = apiInterface.getMoviesListResponse(movieType
                 , GlobalConstant.API_KEY);
 
         movieListResponseObservable.subscribeOn(Schedulers.io())
@@ -52,7 +53,7 @@ public class MovieListModel implements MovieListModelInteractor {
      * @date 15 june 2018
      * @description method to get the movie list single observer
      */
-    public SingleObserver<MovieListResponse> getMovieListObserver() {
+    private SingleObserver<MovieListResponse> getMovieListObserver() {
         return new SingleObserver<MovieListResponse>() {
             @Override
             public void onSubscribe(Disposable d) {

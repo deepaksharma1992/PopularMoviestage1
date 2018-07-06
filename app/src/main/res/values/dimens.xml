@@ -1,19 +1,25 @@
-<resources>
-    <dimen name="fab_margin">16dp</dimen>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="fab_margin" tools:keep="@dimen/fab_margin">16dp</dimen>
     <dimen name="tv_movie_detail_size">19sp</dimen>
+    <dimen name="tv_video_text_size">16sp</dimen>
     <dimen name="five_dp">5dp</dimen>
     <dimen name="ten_dp">10dp</dimen>
-    <dimen name="sixteen_dp">16dp</dimen>
+    <dimen name="sixteen_dp" tools:keep="@dimen/sixteen_dp">16dp</dimen>
     <dimen name="progress_attr">42dp</dimen>
     <dimen name="error_image">60dp</dimen>
-    <dimen name="detail_headaing_text">22sp</dimen>
-    <dimen name="twentytwodp">22dp</dimen>
+    <dimen name="detail_heading_text" tools:keep="@dimen/detail_heading_text">22sp</dimen>
+    <dimen name="twenty_two_dp">22dp</dimen>
     <dimen name="image_detail_width">120dp</dimen>
     <dimen name="image_detail_height">150dp</dimen>
-    <dimen name="header_icon_param">30dp</dimen>
+    <dimen name="header_icon_param">24dp</dimen>
     <dimen name="movie_poster_height">200dp</dimen>
     <dimen name="movie_rating_margin">210dp</dimen>
-    <dimen name="movie_left_margin">20dp</dimen>
+    <dimen name="layout_left_right_margin">16dp</dimen>
     <dimen name="movie_top_margin">150dp</dimen>
     <dimen name="share_width">90dp</dimen>
+    <dimen name="similar_image_height">120dp</dimen>
+    <dimen name="play_button_param">45dp</dimen>
+    <dimen name="video_image_width">140dp</dimen>
+    <dimen name="video_image_height">130dp</dimen>
+    <dimen name="header_text_size">20sp</dimen>
 </resources>

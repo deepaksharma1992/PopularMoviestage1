@@ -1,5 +1,7 @@
 package com.sharma.deepak.popularmoviestage1.bean.similar;
 
+import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
 
 public class SimilarListResponse {
     private int page, total_pages, total_results;
-    private List<SimilarMovie> results;
+    private List<Movie> results;
 
     public int getPage() {
         return page;
@@ -22,7 +24,7 @@ public class SimilarListResponse {
         return total_results;
     }
 
-    public List<SimilarMovie> getResults() {
+    public List<Movie> getResults() {
         return results;
     }
 }

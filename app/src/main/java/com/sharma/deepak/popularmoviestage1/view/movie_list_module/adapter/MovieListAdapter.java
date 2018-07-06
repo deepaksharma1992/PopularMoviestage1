@@ -1,6 +1,7 @@
 package com.sharma.deepak.popularmoviestage1.view.movie_list_module.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,22 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.sharma.deepak.popularmoviestage1.R;
 import com.sharma.deepak.popularmoviestage1.bean.movies.Movie;
+import com.sharma.deepak.popularmoviestage1.utility.GlobalConstant;
+import com.sharma.deepak.popularmoviestage1.utility.NetworkUtil;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by deepak on 18-04-2017.
  */
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieHolderPattern> {
-    private List<Movie> movieListDetails;
-    private Context context;
-    MovieItemClickInterface movieInterface;
+    private final List<Movie> movieListDetails;
+    private final Context context;
+    private final MovieItemClickInterface movieInterface;
 
     public MovieListAdapter(List<Movie> movieListDetails, Context context, MovieItemClickInterface movieInterface) {
         this.context = context;
@@ -30,8 +36,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         this.movieInterface = movieInterface;
     }
 
+    @NonNull
     @Override
-    public MovieHolderPattern onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MovieHolderPattern onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.movie_list_item, parent, false);
 
@@ -39,7 +46,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     }
 
     @Override
-    public void onBindViewHolder(MovieHolderPattern holder, int position) {
+    public void onBindViewHolder(@NonNull MovieHolderPattern holder, int position) {
         Movie movie = movieListDetails.get(position);
         holder.movieTitle.setText(movie.getTitle());
         String movieDetailString = "(" + movie.getOriginal_language() + ")" + "(" + movie.getVote_average() + "/10)";
@@ -47,7 +54,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
 
         Glide
                 .with(context)
-                .load(movie.getPoster_path())
+                .load(NetworkUtil.moviePath(GlobalConstant.POSTER_URL, movie.getPoster_path()))
                 .apply(new RequestOptions()
                         .centerCrop()
                         .error(R.drawable.movie_default)
@@ -62,14 +69,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     }
 
     class MovieHolderPattern extends RecyclerView.ViewHolder implements View.OnClickListener {
+        @BindView(R.id.iv_movie)
         ImageView movieImage;
-        TextView movieTitle, movieDetail;
+        @BindView(R.id.tv_movie_name)
+        TextView movieTitle;
+        @BindView(R.id.tv_movie_detail)
+        TextView movieDetail;
 
-        public MovieHolderPattern(View itemView) {
+        MovieHolderPattern(View itemView) {
             super(itemView);
-            movieImage = (ImageView) itemView.findViewById(R.id.iv_movie);
-            movieTitle = (TextView) itemView.findViewById(R.id.tv_movie_name);
-            movieDetail = (TextView) itemView.findViewById(R.id.tv_movie_detail);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
@@ -82,6 +91,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
 
 
     public interface MovieItemClickInterface {
-        public void movieClick(int position);
+        void movieClick(int position);
     }
 }
